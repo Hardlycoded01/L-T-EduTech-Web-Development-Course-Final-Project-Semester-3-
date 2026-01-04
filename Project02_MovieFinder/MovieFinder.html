@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Movie Search</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        padding: 20px;
+        text-align: center;
+    }
+
+    #searchBox {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    #searchBtn {
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #result {
+        margin-top: 20px;
+    }
+
+    .movie {
+        background: white;
+        padding: 20px;
+        margin: auto;
+        width: 320px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+
+    img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Movie Search</h1>
+
+<input type="text" id="searchBox" placeholder="Enter movie title..." />
+<button id="searchBtn">Search</button>
+
+<div id="result"></div>
+
+
+<script>
+const apiKey = "9bab749c"; // <-- Replace with your key
+
+document.getElementById("searchBtn").addEventListener("click", searchMovie);
+
+function searchMovie() {
+    const title = document.getElementById("searchBox").value;
+
+    if (!title) {
+        alert("Please enter a movie title");
+        return;
+    }
+
+    fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.Response === "False") {
+                document.getElementById("result").innerHTML = `<p>Movie not found.</p>`;
+                return;
+            }
+
+            document.getElementById("result").innerHTML = `
+                <div class="movie">
+                    <img src="${data.Poster}" alt="Poster">
+                    <h2>${data.Title}</h2>
+                    <p><strong>Year:</strong> ${data.Year}</p>
+                    <p><strong>Genre:</strong> ${data.Genre}</p>
+                    <p><strong>Plot:</strong> ${data.Plot}</p>
+                </div>
+            `;
+        })
+        .catch(() => {
+            document.getElementById("result").innerHTML = `<p>Error fetching movie data.</p>`;
+        });
+}
+</script>
+
+</body>
+</html>
+
