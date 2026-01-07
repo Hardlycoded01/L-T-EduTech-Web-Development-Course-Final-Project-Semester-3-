@@ -1,0 +1,188 @@
+/* Importing ancient/old-English themed font */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC:wght@400;700&display=swap');
+
+/* Global Reset + Font Apply */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'IM Fell English SC', serif;
+}
+
+/* Full page parchment-like background */
+body {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #f5ecd7, #e3d4b7, #f9f3e2);
+  background-size: 400% 400%;
+  animation: parchmentGlow 15s ease infinite;
+  color: #3e2c1c;
+  padding: 20px;
+}
+
+/* Soft animated glow effect */
+@keyframes parchmentGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Main centered app container card */
+.app-container {
+  width: 90%;
+  max-width: 900px;
+  background: linear-gradient(145deg, #f9f3e2, #f0e1c4);
+  border: 3px solid #8b5a2b;
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  font-size: 1rem;
+  margin: 50px auto;
+}
+
+/* App heading */
+.app-header h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #4b3621;
+  text-shadow: 1px 1px 0 #c8ad7f;
+  margin-bottom: 25px;
+}
+
+/* Layout for input, output, languages */
+.translator-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Textarea wrapper sections */
+.input-section, .output-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Textarea styling (ancient parchment feel) */
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 15px;
+  border-radius: 12px;
+  border: 2px solid #8b5a2b;
+  background: #fff8dc;
+  color: #3e2c1c;
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Focus highlight effect */
+textarea:focus {
+  border-color: #a67c52;
+  box-shadow: inset 0 0 10px rgba(160,122,82,0.3);
+}
+
+/* From/To language area layout */
+.language-selection {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Select label styling */
+.language-selection label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #5a3e22;
+}
+
+/* Dropdown styling */
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #8b5a2b;
+  background: #fff8dc;
+  color: #3e2c1c;
+  font-weight: bold;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Select focus glow */
+select:focus {
+  border-color: #a67c52;
+  box-shadow: inset 0 0 8px rgba(160,122,82,0.3);
+}
+
+/* Center the translate button */
+.translate-action {
+  text-align: center;
+}
+
+/* Translate button styling */
+#translateBtn {
+  padding: 15px 40px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fffaf0;
+  background: linear-gradient(145deg, #c08b5a, #a66f39);
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+/* Button hover effect */
+#translateBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 7px 14px rgba(0,0,0,0.4);
+}
+
+/* History sidebar/title */
+.history-section {
+  margin-top: 20px;
+}
+
+.history-section h2 {
+  font-size: 1.5rem;
+  color: #5a3e22;
+  margin-bottom: 10px;
+}
+
+/* Scrollable history list */
+#history {
+  list-style: none;
+  max-height: 150px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  padding-right: 5px;
+}
+
+/* Individual history items */
+#history li {
+  padding: 10px;
+  border-radius: 12px;
+  background: #fff8dc;
+  border: 1px solid #8b5a2b;
+  color: #3e2c1c;
+  font-size: 0.95rem;
+}
+
+/* Responsive layout for small screens */
+@media (max-width: 768px) {
+  .language-selection {
+    flex-direction: column;
+  }
+
+  #translateBtn {
+    width: 100%;
+  }
+}
